@@ -1,20 +1,44 @@
-import { StatusBar } from 'expo-status-bar';
-import { StyleSheet, Text, View } from 'react-native';
+/**
+ * Sample React Native App
+ * https://github.com/facebook/react-native
+ *
+ * @format
+ * @flow strict-local
+ */
 
-export default function App() {
-  return (
-    <View style={styles.container}>
-      <Text>Open up App.js to start working on your app!</Text>
-      <StatusBar style="auto" />
-    </View>
-  );
-}
-
-const styles = StyleSheet.create({
-  container: {
-    flex: 1,
-    backgroundColor: '#fff',
-    alignItems: 'center',
-    justifyContent: 'center',
-  },
-});
+ import React from 'react';
+ import {
+   SafeAreaView,
+   ScrollView,
+   StatusBar,
+   StyleSheet,
+   Text,
+   useColorScheme,
+   View,
+   TouchableOpacity,
+ } from 'react-native';
+ import { NavigationContainer } from '@react-navigation/native';
+ import { createNativeStackNavigator } from '@react-navigation/native-stack';
+ import Login from './components/login/Login';
+ import SignUp from './components/login/SignUp';
+ import SetAccount from './components/newAccount/SetAccount';
+ 
+ 
+ const App = () => {
+ 
+   const Stack = createNativeStackNavigator();
+ 
+   return (
+     <NavigationContainer>
+        <Stack.Navigator initialRouteName='Login'>
+         <Stack.Screen name="Login" component={Login} options={{headerShown: false}}/>
+            <Stack.Screen name="SignUp" component={SignUp} options={{headerShown: false}}/>
+            <Stack.Screen name="SetAccount" component={SetAccount} options={{headerShown: false}}/>
+       </Stack.Navigator>
+     </NavigationContainer>
+   )
+ }
+ 
+ 
+ export default App;
+ 
