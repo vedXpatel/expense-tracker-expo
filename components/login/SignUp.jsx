@@ -27,7 +27,7 @@ const SignUp = ({navigation}) => {
             }} onPress={(isChecked) => {}} text="By signing up, you agree to the Terms of Service and Privacy Policy" iconStyle={{ borderColor: "#E0E0E0", borderRadius:5, }} innerIconStyle={{borderRadius:5,}} textStyle={{ fontFamily: "Poppins-Regular" }}/>
             </View>
                 <TouchableOpacity style={styles.loginButton}>
-                <Text style={{ color: "white", fontSize: 18, fontFamily: "Poppins-Regular", textAlign: "center" }}>
+                <Text style={{ color: "white", fontSize: 18, textAlign: "center" }}>
                     Sign Up
                 </Text>
             </TouchableOpacity>
@@ -51,7 +51,6 @@ const styles = StyleSheet.create({
         borderRadius: 16,
         paddingLeft: 10,
         paddingRight: 10,
-        fontFamily: "Poppins-Regular",
         fontSize: 15,
         paddingTop: 15,
         paddingBottom: 15,
@@ -61,7 +60,6 @@ const styles = StyleSheet.create({
         fontSize: 18,
         color: "black",
         top: height / 18,
-        fontFamily: "Poppins-Regular",
     },
     loginInput: {
         borderColor: "#E0E0E0",
@@ -72,7 +70,6 @@ const styles = StyleSheet.create({
         borderRadius: 16,
         paddingLeft: 10,
         paddingRight: 10,
-        fontFamily: "Poppins-Regular",
         fontSize: 15,
         paddingTop: 15,
         paddingBottom: 15,
@@ -86,7 +83,6 @@ const styles = StyleSheet.create({
         borderRadius: 16,
         paddingLeft: 10,
         paddingRight: 10,
-        fontFamily: "Poppins-Regular",
         fontSize: 15,
         paddingTop: 15,
         paddingBottom: 15,
@@ -98,7 +94,6 @@ const styles = StyleSheet.create({
         borderRadius: 16,
         paddingLeft: 10,
         paddingRight: 10,
-        fontFamily: "Poppins-Regular",
         fontSize: 15,
         paddingTop: 15,
         paddingBottom: 15,

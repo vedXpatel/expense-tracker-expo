@@ -20,7 +20,7 @@ const Login = ({ navigation }) => {
             <TextInput style={styles.loginInput} placeholder="Email" />
             <TextInput secureTextEntry={true} style={styles.passwordInput} placeholder="Password" />
             <TouchableOpacity style={styles.loginButton} onPress={() => navigation.navigate('SetAccount')}>
-                <Text style={{ color: "white", fontSize: 18, fontFamily: "Poppins-Regular", textAlign: "center" }}>
+                <Text style={{ color: "white", fontSize: 18, textAlign: "center" }}>
                     Login
                 </Text>
             </TouchableOpacity>
@@ -42,7 +42,6 @@ const styles = StyleSheet.create({
         fontSize: 18,
         color: "black",
         top: height / 18,
-        fontFamily: "Poppins-Regular",
     },
     loginInput: {
         borderColor: "#E0E0E0",
@@ -53,7 +52,6 @@ const styles = StyleSheet.create({
         borderRadius: 16,
         paddingLeft: 10,
         paddingRight: 10,
-        fontFamily: "Poppins-Regular",
         fontSize: 15,
         paddingTop: 15,
         paddingBottom: 15,
@@ -67,7 +65,6 @@ const styles = StyleSheet.create({
         borderRadius: 16,
         paddingLeft: 10,
         paddingRight: 10,
-        fontFamily: "Poppins-Regular",
         fontSize: 15,
         paddingTop: 15,
         paddingBottom: 15,
@@ -79,7 +76,6 @@ const styles = StyleSheet.create({
         borderRadius: 16,
         paddingLeft: 10,
         paddingRight: 10,
-        fontFamily: "Poppins-Regular",
         fontSize: 15,
         paddingTop: 15,
         paddingBottom: 15,
