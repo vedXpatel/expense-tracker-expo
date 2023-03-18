@@ -7,7 +7,8 @@ import {
   TextInput,
   ScrollView,
   Platform,
-  TouchableOpacity
+  TouchableOpacity,
+  ActivityIndicator
 } from "react-native";
 import { Picker } from "@react-native-picker/picker";
 
@@ -16,39 +17,81 @@ const height = Dimensions.get("window").height;
 
 const SetAccount = ({ navigation }) => {
   const [selectedLanguage, setSelectedLanguage] = useState();
+  const [isLoading,setIsLoading] = useState(true);
+
+  const continueFunc = () => {
+    setIsLoading(false);
+    // setInterval(function(){setIsLoading(true)},1000);
+    setInterval(function(){navigation.navigate("Home")},2000);
+  }
 
   return (
     <ScrollView>
-      
-    <View>
-      <View style={styles.backgroundView}>
-        <View></View>
-        <Text style={styles.loginText}>Add New Account</Text>
-        <Text style={{top:height/2.05,marginLeft:20,fontSize:18,color: "#FCFCFC"}}>Balance</Text>
-      <TextInput inputmode="decimal"  style={styles.balanceInput} placeholder="$00.00" keyboardType={'numeric'} placeholderTextColor = "white"/>
-      </View>
-      <View style={styles.newAccountView}>
-        <TextInput style={styles.loginInput} placeholder="Name" />
-        {/* <TextInput style={styles.accountTypeInput} placeholder="AccountType" /> */}
-        <Text style={{fontSize: 15,color:"#C4C4C4",marginLeft:30,marginTop:height/20,marginBottom:-(height/20),}}>Account Type</Text>
-        <Picker
-          style={styles.accountTypeInput}
-          selectedValue={selectedLanguage}
-          onValueChange={(itemValue, itemIndex) =>
-            setSelectedLanguage(itemValue)
-          }
-        >
-          <Picker.Item label="Cash" value="cash" />
-          <Picker.Item label="Bank" value="bank" />
-        </Picker>
-        <TouchableOpacity style={styles.loginButton} onPress={() => navigation.navigate('SetAccount')}>
-                <Text style={{ color: "white", fontSize: 18, textAlign: "center" }}>
-                    Continue
-                </Text>
+      {isLoading ? (
+        <View>
+          <View style={styles.backgroundView}>
+            <View></View>
+            <Text style={styles.loginText}>Add New Account</Text>
+            <Text
+              style={{
+                top: height / 2.05,
+                marginLeft: 20,
+                fontSize: 18,
+                color: "#FCFCFC",
+              }}
+            >
+              Balance
+            </Text>
+            <TextInput
+              inputmode="decimal"
+              style={styles.balanceInput}
+              placeholder="$00.00"
+              keyboardType={"numeric"}
+              placeholderTextColor="white"
+            />
+          </View>
+          <View style={styles.newAccountView}>
+            <TextInput style={styles.loginInput} placeholder="Name" />
+            {/* <TextInput style={styles.accountTypeInput} placeholder="AccountType" /> */}
+            <Text
+              style={{
+                fontSize: 15,
+                color: "#C4C4C4",
+                marginLeft: 30,
+                marginTop: height / 20,
+                marginBottom: -(height / 20),
+              }}
+            >
+              Account Type
+            </Text>
+            <Picker
+              style={styles.accountTypeInput}
+              selectedValue={selectedLanguage}
+              onValueChange={(itemValue, itemIndex) =>
+                setSelectedLanguage(itemValue)
+              }
+            >
+              <Picker.Item label="Cash" value="cash" />
+              <Picker.Item label="Bank" value="bank" />
+            </Picker>
+            <TouchableOpacity
+              style={styles.loginButton}
+              onPress={continueFunc}
+            >
+              <Text
+                style={{ color: "white", fontSize: 18, textAlign: "center" }}
+              >
+                Continue
+              </Text>
             </TouchableOpacity>
-      </View>
-    </View>
-</ScrollView>
+          </View>
+        </View>
+      ) :  (
+        <View style={{ top:height/2,}}>
+          <ActivityIndicator size="large" color="#7F3DFF" />
+        </View>
+      )}
+    </ScrollView>
   );
 };
 
@@ -74,8 +117,7 @@ const styles = StyleSheet.create({
     borderTopLeftRadius: 32,
     borderTopRightRadius: 32,
   },
-  accountTypeView: {
-  },
+  accountTypeView: {},
   loginInput: {
     borderColor: "#E0E0E0",
     borderWidth: 1,
@@ -113,14 +155,14 @@ const styles = StyleSheet.create({
     fontSize: 15,
     paddingTop: 15,
     paddingBottom: 15,
-    top: Platform.OS === "android" ? height/20 : -(height/12),
-},
-balanceInput:{
-  fontSize:64,
-  color:"white",
-  top: Platform.OS === "ios" ? height/2 : height/2.1,
-  marginLeft:20,
-}
+    top: Platform.OS === "android" ? height / 20 : -(height / 12),
+  },
+  balanceInput: {
+    fontSize: 64,
+    color: "white",
+    top: Platform.OS === "ios" ? height / 2 : height / 2.1,
+    marginLeft: 20,
+  },
 });
 
 export default SetAccount;

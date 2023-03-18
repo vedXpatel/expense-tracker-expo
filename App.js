@@ -22,6 +22,7 @@
  import Login from './components/login/Login';
  import SignUp from './components/login/SignUp';
  import SetAccount from './components/newAccount/SetAccount';
+ import Home from './components/Home.jsx';
  
  
  const App = () => {
@@ -34,6 +35,7 @@
          <Stack.Screen name="Login" component={Login} options={{headerShown: false}}/>
             <Stack.Screen name="SignUp" component={SignUp} options={{headerShown: false}}/>
             <Stack.Screen name="SetAccount" component={SetAccount} options={{headerShown: false}}/>
+            <Stack.Screen name="Home" component={Home} options={{headerShown: false}}/>
        </Stack.Navigator>
      </NavigationContainer>
    )
