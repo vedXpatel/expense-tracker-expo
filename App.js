@@ -23,7 +23,8 @@
  import SignUp from './components/login/SignUp';
  import SetAccount from './components/newAccount/SetAccount';
  import Home from './components/Home.jsx';
- 
+ import NavBar from './components/NavBar';
+ import AddExpense from './components/AddExpense.jsx';
  
  const App = () => {
  
@@ -36,6 +37,8 @@
             <Stack.Screen name="SignUp" component={SignUp} options={{headerShown: false}}/>
             <Stack.Screen name="SetAccount" component={SetAccount} options={{headerShown: false}}/>
             <Stack.Screen name="Home" component={Home} options={{headerShown: false}}/>
+            <Stack.Screen name="NavBar" component={NavBar} options={{headerShown: false}}/>
+            <Stack.Screen name="AddExpense" component={AddExpense} options={{headerShown: false}}/>
        </Stack.Navigator>
      </NavigationContainer>
    )

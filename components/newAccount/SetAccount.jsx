@@ -22,7 +22,8 @@ const SetAccount = ({ navigation }) => {
   const continueFunc = () => {
     setIsLoading(false);
     // setInterval(function(){setIsLoading(true)},1000);
-    setInterval(function(){navigation.navigate("Home")},2000);
+    // setInterval(function(){navigation.navigate("Home")},100);
+    navigation.navigate("Home");
   }
 
   return (
@@ -91,6 +92,7 @@ const SetAccount = ({ navigation }) => {
           <ActivityIndicator size="large" color="#7F3DFF" />
         </View>
       )}
+      
     </ScrollView>
   );
 };
