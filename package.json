@@ -20,7 +20,7 @@
     "lottie-ios": "3.4.0",
     "lottie-react-native": "5.1.4",
     "react": "18.0.0",
-    "react-dom": "^18.2.0",
+    "react-dom": "18.0.0",
     "react-native": "0.69.6",
     "react-native-bouncy-checkbox": "^3.0.5",
     "react-native-curved-bottom-bar": "^3.2.2",
