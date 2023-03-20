@@ -8,9 +8,11 @@ import {
     Button,
     TouchableOpacity,
     TextInput,
+    Switch,
 } from "react-native";
 import DropDownPicker from "react-native-dropdown-picker";
 import * as ImagePicker from "expo-image-picker";
+import { FontAwesome } from '@expo/vector-icons';
 
 const height = Dimensions.get("window").height;
 const width = Dimensions.get("window").width;
@@ -48,7 +50,13 @@ export default function AddExpense() {
         { label: "Bank", value: "Bank" },
     ]);
 
-    const [selectedCar, setSelectedCar] = useState(null);
+    // toggleSwitch
+    const [isEnabled, setIsEnabled] = useState(false);
+    const toggleSwitch = () => setIsEnabled(previousState => !previousState);
+    // toggleSwitch
+
+
+    // image picker
 
     const [image, setImage] = useState(null);
 
@@ -67,6 +75,8 @@ export default function AddExpense() {
             setImage(result.assets[0].uri);
         }
     };
+
+    // image picker
 
     return (
         <View
@@ -196,10 +206,33 @@ export default function AddExpense() {
                     showTickIcon={false}
                     placeholder="Payment Mode"
                 />
-                <View style={{ flex: 1, alignItems: 'center', justifyContent: 'center' }}>
-                    <TouchableOpacity title="Pick an image from camera roll" onPress={pickImage} style={styles.uploadImage} > <Text>Add Attachment</Text>  </TouchableOpacity>
-                    {image && <Image source={{ uri: image }} style={{ width: 200, height: 200 }} />}
+                <TouchableOpacity onPress={pickImage} style={styles.uploadImage}>
+                    <Text style={{ color: "#91919F", fontSize: 18, fontWeight: "400", textAlign: "center" }}>
+                        <FontAwesome name="paperclip" size={24} color="#91919F" />     Add Attachment</Text>
+                </TouchableOpacity>
+                {image && <Image source={{ uri: image }} style={{ width: 200, height: 200 }} />}
+                <View style={{ flexDirection: "row", justifyContent: "space-between", paddingHorizontal: width / 23.43, paddingTop: height / 100 }}>
+                    <View>
+                        <Text style={{ color: "black", fontSize: 18, fontWeight: '500' }}>Repeat</Text>
+                        <Text style={{ fontSize: 13, fontWeight: '500', color: "#91919F" }}>Repeat Transaction</Text>
+                    </View>
+                    <Switch
+                        trackColor={{ false: '#EEE5FF', true: '#7F3DFF' }}
+                        thumbColor={isEnabled ? '#FCFCFC' : '#FCFCFC'}
+                        ios_backgroundColor="#3e3e3e"
+                        onValueChange={toggleSwitch}
+                        value={isEnabled}
+                    />
                 </View>
+                <TouchableOpacity
+                    style={styles.loginButton}
+                >
+                    <Text
+                        style={{ color: "white", fontSize: 18, textAlign: "center" }}
+                    >
+                        Continue
+                    </Text>
+                </TouchableOpacity>
             </View>
         </View>
     );
@@ -237,7 +270,7 @@ const styles = StyleSheet.create({
         marginBottom: height / 50.75,
     },
     uploadImage: {
-        borderColor: "#F1F1FA",
+        borderColor: "#D8D8DA",
         borderWidth: 1,
         borderRadius: 16,
         fontSize: 18,
@@ -248,5 +281,20 @@ const styles = StyleSheet.create({
         paddingLeft: width / 40,
         color: "#91919F",
         marginBottom: height / 50.75,
-    }
+        flexDirection: "row",
+        justifyContent: "center",
+        paddingTop: height / 80,
+        borderStyle: 'dashed',
+    },
+    loginButton: {
+        width: width / 1.09,
+        backgroundColor: "#7F3DFF",
+        borderRadius: 16,
+        paddingLeft: width / 23.43,
+        height: height / 14.5,
+        fontSize: 18,
+        justifyContent: "center",
+        marginTop: height / 50.75,
+
+    },
 });
