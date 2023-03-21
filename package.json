@@ -14,6 +14,8 @@
     "@react-navigation/bottom-tabs": "^6.5.7",
     "@react-navigation/native": "^6.0.13",
     "@react-navigation/native-stack": "^6.9.1",
+    "@rneui/base": "^0.0.0-edge.2",
+    "@rneui/themed": "^0.0.0-edge.2",
     "@shoutem/ui": "^6.1.2",
     "expo": "~46.0.16",
     "expo-image-picker": "^14.1.1",

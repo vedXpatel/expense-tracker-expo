@@ -18,9 +18,10 @@ import Svg, {
   Stop,
   LinearGradient,
 } from "react-native-svg";
-import BottomTab from "./BottomTab";
-import TabBar from "fluidbottomnavigation-rn";
+// import BottomTab from "./BottomTab";
+// import TabBar from "fluidbottomnavigation-rn";
 import Navbar from "./NavBar";
+import { Avatar } from '@rneui/themed';
 
 const width = Dimensions.get("window").width;
 const height = Dimensions.get("window").height;
@@ -52,7 +53,7 @@ const recentTransactions = [
   {
     title: "Shopping",
     type: "expense",
-    amount:"150",
+    amount: "150",
     note: "lorem ipsum",
     datetime: "10:00 AM",
     id: 1,
@@ -60,7 +61,7 @@ const recentTransactions = [
   {
     title: "Shopping",
     type: "expense",
-    amount:"150",
+    amount: "150",
     note: "lorem ipsum",
     datetime: "10:00 AM",
     id: 2,
@@ -68,7 +69,7 @@ const recentTransactions = [
   {
     title: "Shopping",
     type: "expense",
-    amount:"150",
+    amount: "150",
     note: "lorem ipsum",
     datetime: "10:00 AM",
     id: 3,
@@ -76,34 +77,34 @@ const recentTransactions = [
   {
     title: "Lottery",
     type: "income",
-    amount:"150",
+    amount: "150",
     note: "won a million dollar lottery",
     datetime: "10:00 AM",
     id: 4,
   },
 ];
 
-const TransactionItem = ({ title, type, note, datetime,amount }) => (
+const TransactionItem = ({ title, type, note, datetime, amount }) => (
   <TouchableOpacity>
-  <View
-    style={{
-      flexDirection: "row",
-      justifyContent:"space-around",
-      paddingTop: 10,
-    }}
-  >
-    <Image style={{marginLeft:20}} source={require("../assets/images/Shopping.png")} />
-    <View style={{ flexDirection: "column",justifyContent:"space-evenly"}}>
-      <Text style={{fontSize:16,fontWeight:"500"}}>{title}</Text>
-      <Text style={{fontSize:13,color:"#91919F"}}>{ (note.length > 15) ?  note.substring(0,12) + "..."  : note} </Text>
+    <View
+      style={{
+        flexDirection: "row",
+        justifyContent: "space-around",
+        paddingTop: 10,
+      }}
+    >
+      <Image style={{ marginLeft: 20 }} source={require("../assets/images/Shopping.png")} />
+      <View style={{ flexDirection: "column", justifyContent: "space-evenly" }}>
+        <Text style={{ fontSize: 16, fontWeight: "500" }}>{title}</Text>
+        <Text style={{ fontSize: 13, color: "#91919F" }}>{(note.length > 15) ? note.substring(0, 12) + "..." : note} </Text>
+      </View>
+      <View style={{ width: width / 6.14 }}></View>
+      <View style={{ flexDirection: "column", justifyContent: "space-evenly" }}>
+        <Text style={type === "expense" ? styles.negative : styles.positive}>{type === "expense" ? "-" : "+"}${amount}</Text>
+        <Text style={{ fontSize: 13, color: "#91919F" }}>{datetime}</Text>
+      </View>
     </View>
-    <View style={{width:width/6.14}}></View>
-    <View style={{ flexDirection: "column",justifyContent:"space-evenly" }}>
-      <Text style={type === "expense" ? styles.negative : styles.positive}>{type==="expense" ? "-" : "+"}${amount}</Text>
-      <Text style={{fontSize:13,color:"#91919F"}}>{datetime}</Text>
-    </View>
-  </View>
-</TouchableOpacity>
+  </TouchableOpacity>
 );
 
 function Home() {
@@ -129,7 +130,17 @@ function Home() {
   return (
     <View>
       <ScrollView>
-        <View style={{height:height*1.5}}>
+        <View style={{ height: height * 1.5 }}>
+          <View style={{position:"absolute",justifyContent:"space-between",top:height/13.5333,marginHorizontal:width/23.4375,flexDirection="row"}}>
+            <TouchableOpacity style={{borderWidth:1,borderRadius:24,borderColor:"#7F3DFF",padding:1}}>
+            <Avatar
+              size={32}
+              rounded
+              source={{ uri: "https://randomuser.me/api/portraits/men/36.jpg" }}
+            />
+            </TouchableOpacity>
+            <Image source={require("../assets/images/notification.png")}  />
+          </View>
           <Text style={styles.loginText}>Account Balance</Text>
           <Text style={styles.accountBalance}>$9400</Text>
           <View style={styles.incomeView}>
@@ -236,7 +247,7 @@ function Home() {
               source={require("../assets/images/spendGraph.png")}
             />
           </View>
-          
+
           <View style={{ top: height / 4 }}>
             <FlatList
               horizontal={true}
@@ -253,23 +264,23 @@ function Home() {
                 fontSize: 18,
                 fontWeight: "600",
                 paddingTop: height / 33.833,
-                marginBottom:height/50,
+                marginBottom: height / 50,
               }}
             >
               Recent Transactions
             </Text>
 
-              {recentTransactions.map((item)=>{
-                return (
+            {recentTransactions.map((item) => {
+              return (
                 <TransactionItem
-                title={item.title}
-                type={item.type}
-                datetime={item.datetime}
-                note={item.note}
-                amount={item.amount}
-                key = {item.id}
-              />);
-              })}
+                  title={item.title}
+                  type={item.type}
+                  datetime={item.datetime}
+                  note={item.note}
+                  amount={item.amount}
+                  key={item.id}
+                />);
+            })}
 
 
             {/* <FlatList
@@ -299,8 +310,8 @@ function Home() {
         { title: "Account", icon: require("../assets/images/plus.png") }
       ]}
     /> */}
-    <Navbar/>
-</View>
+      <Navbar />
+    </View>
   );
 }
 
@@ -372,15 +383,15 @@ const styles = StyleSheet.create({
   unselectedText: {
     color: "#91919F",
   },
-  negative:{
-    color:"#FD3C4A",
-    fontWeight:"600",
-    fontSize:16,
+  negative: {
+    color: "#FD3C4A",
+    fontWeight: "600",
+    fontSize: 16,
   },
-  positive:{
-    color:"#00A86B",
-    fontWeight:"600",
-    fontSize:16,
+  positive: {
+    color: "#00A86B",
+    fontWeight: "600",
+    fontSize: 16,
   }
 });
 
