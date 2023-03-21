@@ -22,6 +22,9 @@ import Svg, {
 // import TabBar from "fluidbottomnavigation-rn";
 import Navbar from "./NavBar";
 import { Avatar } from '@rneui/themed';
+import { useNavigation } from '@react-navigation/native';
+
+
 
 const width = Dimensions.get("window").width;
 const height = Dimensions.get("window").height;
@@ -84,31 +87,11 @@ const recentTransactions = [
   },
 ];
 
-const TransactionItem = ({ title, type, note, datetime, amount }) => (
-  <TouchableOpacity>
-    <View
-      style={{
-        flexDirection: "row",
-        justifyContent: "space-around",
-        paddingTop: 10,
-      }}
-    >
-      <Image style={{ marginLeft: 20 }} source={require("../assets/images/Shopping.png")} />
-      <View style={{ flexDirection: "column", justifyContent: "space-evenly" }}>
-        <Text style={{ fontSize: 16, fontWeight: "500" }}>{title}</Text>
-        <Text style={{ fontSize: 13, color: "#91919F" }}>{(note.length > 15) ? note.substring(0, 12) + "..." : note} </Text>
-      </View>
-      <View style={{ width: width / 6.14 }}></View>
-      <View style={{ flexDirection: "column", justifyContent: "space-evenly" }}>
-        <Text style={type === "expense" ? styles.negative : styles.positive}>{type === "expense" ? "-" : "+"}${amount}</Text>
-        <Text style={{ fontSize: 13, color: "#91919F" }}>{datetime}</Text>
-      </View>
-    </View>
-  </TouchableOpacity>
-);
+
 
 function Home() {
   const [selected, setSelected] = useState(1);
+  const navigation = useNavigation();
 
   const Item = ({ title, serial }) => (
     <View style={styles.tabView}>
@@ -127,11 +110,34 @@ function Home() {
     </View>
   );
 
+  const TransactionItem = ({ title, type, note, datetime, amount }) => (
+    <TouchableOpacity onPress={()=>navigation.navigate("DetailTransaction",{title:title,type:type,note:note,datetime:datetime,amount:amount})}>
+      <View
+        style={{
+          flexDirection: "row",
+          justifyContent: "space-around",
+          paddingTop: 10,
+        }}
+      >
+        <Image style={{ marginLeft: 20 }} source={require("../assets/images/Shopping.png")} />
+        <View style={{ flexDirection: "column", justifyContent: "space-evenly" }}>
+          <Text style={{ fontSize: 16, fontWeight: "500" }}>{title}</Text>
+          <Text style={{ fontSize: 13, color: "#91919F" }}>{(note.length > 15) ? note.substring(0, 12) + "..." : note} </Text>
+        </View>
+        <View style={{ width: width / 6.14 }}></View>
+        <View style={{ flexDirection: "column", justifyContent: "space-evenly" }}>
+          <Text style={type === "expense" ? styles.negative : styles.positive}>{type === "expense" ? "-" : "+"}${amount}</Text>
+          <Text style={{ fontSize: 13, color: "#91919F" }}>{datetime}</Text>
+        </View>
+      </View>
+    </TouchableOpacity>
+  );
+
   return (
     <View>
       <ScrollView>
         <View style={{ height: height * 1.5 }}>
-          <View style={{position:"absolute",justifyContent:"space-between",top:height/13.5333,marginHorizontal:width/23.4375,flexDirection="row"}}>
+          <View style={{position:"absolute",justifyContent:"space-between",top:height/13.5333,marginHorizontal:width/23.4375,flexDirection:"row",width:width - (width/23.4375) - (width/23.4375),}}>
             <TouchableOpacity style={{borderWidth:1,borderRadius:24,borderColor:"#7F3DFF",padding:1}}>
             <Avatar
               size={32}
@@ -139,7 +145,9 @@ function Home() {
               source={{ uri: "https://randomuser.me/api/portraits/men/36.jpg" }}
             />
             </TouchableOpacity>
+            <TouchableOpacity>
             <Image source={require("../assets/images/notification.png")}  />
+            </TouchableOpacity>
           </View>
           <Text style={styles.loginText}>Account Balance</Text>
           <Text style={styles.accountBalance}>$9400</Text>
