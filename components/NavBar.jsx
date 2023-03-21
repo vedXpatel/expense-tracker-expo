@@ -104,7 +104,7 @@ export const styles = StyleSheet.create({
         padding: 20,
     },
     shawdow: {
-        shadowColor: "#DDDDDD",
+        shadowColor: "#0f0f0f",
         shadowOffset: {
             width: 0,
             height: 0,
@@ -117,7 +117,9 @@ export const styles = StyleSheet.create({
         justifyContent: "center",
 
     },
-    bottomBar: {},
+    bottomBar: {
+
+    },
     btnCircleUp: {
         width: 60,
         height: 60,

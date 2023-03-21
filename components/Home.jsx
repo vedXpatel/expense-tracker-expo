@@ -127,7 +127,7 @@ function Home() {
   );
 
   return (
-    <SafeAreaView >
+    <View>
       <ScrollView>
         <View style={{height:height*1.5}}>
           <Text style={styles.loginText}>Account Balance</Text>
@@ -300,7 +300,7 @@ function Home() {
       ]}
     /> */}
     <Navbar/>
-</SafeAreaView>
+</View>
   );
 }
 

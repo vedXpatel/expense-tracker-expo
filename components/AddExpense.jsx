@@ -9,6 +9,8 @@ import {
   TouchableOpacity,
   TextInput,
   Switch,
+  Image,
+  Alert
 } from "react-native";
 import DropDownPicker from "react-native-dropdown-picker";
 import * as ImagePicker from "expo-image-picker";
@@ -17,7 +19,7 @@ import { FontAwesome } from "@expo/vector-icons";
 const height = Dimensions.get("window").height;
 const width = Dimensions.get("window").width;
 
-export default function AddExpense() {
+export default function AddExpense({navigation}) {
   const [open, setOpen] = useState(false);
   const [categoryOpen, setCategoryOpen] = useState(false);
   const [typeOpen, setTypeOpen] = useState(false);
@@ -28,10 +30,10 @@ export default function AddExpense() {
   ]);
   const [category, setCategory] = useState(null);
   const [categories, setCategories] = useState([
-    { label: "Shopping", value: "Shopping" },
-    { label: "Subscription", value: "Subscription" },
-    { label: "Food", value: "Food" },
-    { label: "Traveling", value: "Traveling" },
+    { label: "Shopping", value: "Shopping",icon: () => <Image source={require('../assets/images/Shopping.png')} style={styles.iconStyle}/> },
+    { label: "Subscription", value: "Subscription",icon: () => <Image source={require('../assets/images/subscription.png')} style={styles.iconStyle}/> },
+    { label: "Food", value: "Food",icon: () => <Image source={require('../assets/images/Food.png')} style={styles.iconStyle}/> },
+    { label: "Traveling", value: "Traveling",icon: () => <Image source={require('../assets/images/transportation.png')} style={styles.iconStyle}/> },
     { label: "Entertainment", value: "Entertainment" },
     { label: "Medical", value: "Medical" },
     { label: "Personal Care", value: "Personal Care" },
@@ -76,6 +78,10 @@ export default function AddExpense() {
   };
 
   // image picker
+
+  const onAdded = () => {
+    navigation.navigate("Home")
+  }
 
   return (
     <View
@@ -160,6 +166,7 @@ export default function AddExpense() {
           setItems={setCategories}
           autoScroll={true}
           listMode="SCROLLVIEW"
+          theme="DARK"
           style={{
             backgroundColor: "white",
             width: width / 1.09,
@@ -191,6 +198,7 @@ export default function AddExpense() {
           }}
           showTickIcon={false}
           placeholder="Category"
+          
         />
           </View>
         <TextInput style={styles.loginInput} placeholder="Description" />
@@ -277,7 +285,7 @@ export default function AddExpense() {
             value={isEnabled}
           />
         </View>
-        <TouchableOpacity style={styles.loginButton}>
+        <TouchableOpacity style={styles.loginButton} onPress={onAdded}>
           <Text style={{ color: "white", fontSize: 18, textAlign: "center" }}>
             Continue
           </Text>
@@ -352,4 +360,8 @@ const styles = StyleSheet.create({
     fontWeight: "600",
     lineHeight: 77,
   },
+  iconStyle:{
+    height:height/23.2,
+    width:width/10.71,
+  }
 });

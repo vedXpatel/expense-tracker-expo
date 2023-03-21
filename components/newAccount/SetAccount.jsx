@@ -52,7 +52,7 @@ const SetAccount = ({ navigation }) => {
             />
           </View>
           <View style={styles.newAccountView}>
-            <TextInput style={styles.loginInput} placeholder="Name" />
+            <TextInput style={styles.loginInput} placeholder="Name"  />
             {/* <TextInput style={styles.accountTypeInput} placeholder="AccountType" /> */}
             <Text
               style={{
