@@ -33,7 +33,7 @@
  
    return (
      <NavigationContainer>
-        <Stack.Navigator initialRouteName='DetailTransaction'>
+        <Stack.Navigator initialRouteName='Home'>
          <Stack.Screen name="Login" component={Login} options={{headerShown: false}}/>
             <Stack.Screen name="SignUp" component={SignUp} options={{headerShown: false}}/>
             <Stack.Screen name="SetAccount" component={SetAccount} options={{headerShown: false}}/>

@@ -55,7 +55,7 @@ const tabs = [
 const recentTransactions = [
   {
     title: "Shopping",
-    type: "expense",
+    type: "Expense",
     amount: "150",
     note: "lorem ipsum",
     datetime: "10:00 AM",
@@ -63,7 +63,7 @@ const recentTransactions = [
   },
   {
     title: "Shopping",
-    type: "expense",
+    type: "Expense",
     amount: "150",
     note: "lorem ipsum",
     datetime: "10:00 AM",
@@ -71,7 +71,7 @@ const recentTransactions = [
   },
   {
     title: "Shopping",
-    type: "expense",
+    type: "Expense",
     amount: "150",
     note: "lorem ipsum",
     datetime: "10:00 AM",
@@ -79,7 +79,7 @@ const recentTransactions = [
   },
   {
     title: "Lottery",
-    type: "income",
+    type: "Income",
     amount: "150",
     note: "won a million dollar lottery",
     datetime: "10:00 AM",
@@ -126,7 +126,7 @@ function Home() {
         </View>
         <View style={{ width: width / 6.14 }}></View>
         <View style={{ flexDirection: "column", justifyContent: "space-evenly" }}>
-          <Text style={type === "expense" ? styles.negative : styles.positive}>{type === "expense" ? "-" : "+"}${amount}</Text>
+          <Text style={type === "Expense" ? styles.negative : styles.positive}>{type === "Expense" ? "-" : "+"}${amount}</Text>
           <Text style={{ fontSize: 13, color: "#91919F" }}>{datetime}</Text>
         </View>
       </View>
@@ -189,7 +189,7 @@ function Home() {
                 </View>
               </View>
             </View>
-            <View style={styles.expenseBox}>
+            <View style={styles.ExpenseBox}>
               <View>
                 <Svg
                   width="48"
@@ -227,7 +227,7 @@ function Home() {
               </View>
             </View>
           </View>
-          {/* income expense box end */}
+          {/* income Expense box end */}
           <View style={{ top: height / 4.5 }}>
             <Text
               style={{
@@ -354,7 +354,7 @@ const styles = StyleSheet.create({
     padding: 15,
     justifyContent: "space-around",
   },
-  expenseBox: {
+  ExpenseBox: {
     width: width / 2.28 > 80 ? width / 2.28 : 80,
     backgroundColor: "#FD3C4A",
     height: height / 10.15,
