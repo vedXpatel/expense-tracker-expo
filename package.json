@@ -17,6 +17,7 @@
     "@rneui/base": "^0.0.0-edge.2",
     "@rneui/themed": "^0.0.0-edge.2",
     "@shoutem/ui": "^6.1.2",
+    "@vseslav/react-native-horizontal-picker": "^0.1.1",
     "expo": "~46.0.16",
     "expo-image-picker": "^14.1.1",
     "expo-status-bar": "~1.4.0",

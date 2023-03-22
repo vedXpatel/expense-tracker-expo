@@ -63,18 +63,50 @@ export default function AddExpense({navigation}) {
 
   const pickImage = async () => {
     // No permissions request is necessary for launching the image library
-    let result = await ImagePicker.launchImageLibraryAsync({
-      mediaTypes: ImagePicker.MediaTypeOptions.All,
-      allowsEditing: true,
-      aspect: [4, 3],
-      quality: 1,
-    });
+    // let result = await ImagePicker.launchImageLibraryAsync({
+    //   mediaTypes: ImagePicker.MediaTypeOptions.All,
+    //   allowsEditing: true,
+    //   aspect: [4, 3],
+    //   quality: 1,
+    // });
 
+    // console.log(result);
+
+    // if (!result.canceled) {
+    //   setImage(result.assets[0].uri);
+    // }
+
+    // different code
+    // let permissionResult = await ImagePicker.requestMediaLibraryPermissionsAsync();
+    
+    // if (permissionResult.granted === false) {
+    //   alert("Permission to access camera roll is required!");
+    //   return;
+    // }
+
+    // let pickerResult = await ImagePicker.launchImageLibraryAsync();
+    // console.log(pickerResult);
+    // different code
+
+    // camera code
+    const permissionResult = await ImagePicker.requestCameraPermissionsAsync();
+
+    if (permissionResult.granted === false) {
+      alert("You've refused to allow this app to access your camera!");
+      return;
+    }
+
+    const result = await ImagePicker.launchCameraAsync();
+
+    // Explore the result
     console.log(result);
 
-    if (!result.canceled) {
-      setImage(result.assets[0].uri);
+    if (!result.cancelled) {
+      setPickedImagePath(result.uri);
+      console.log(result.uri);
     }
+    // camera code
+
   };
 
   // image picker
@@ -254,8 +286,7 @@ export default function AddExpense({navigation}) {
               textAlign: "center",
             }}
           >
-            <FontAwesome name="paperclip" size={24} color="#91919F" /> Add
-            Attachment
+            <FontAwesome name="paperclip" size={24} color="#91919F" /> Add Attachment
           </Text>
         </TouchableOpacity>
         {image && (
