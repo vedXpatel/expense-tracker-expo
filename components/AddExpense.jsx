@@ -10,16 +10,17 @@ import {
   TextInput,
   Switch,
   Image,
-  Alert
+  Alert,
 } from "react-native";
 import DropDownPicker from "react-native-dropdown-picker";
 import * as ImagePicker from "expo-image-picker";
 import { FontAwesome } from "@expo/vector-icons";
+import HorizontalPicker from "@vseslav/react-native-horizontal-picker";
 
 const height = Dimensions.get("window").height;
 const width = Dimensions.get("window").width;
 
-export default function AddExpense({navigation}) {
+export default function AddExpense({ navigation }) {
   const [open, setOpen] = useState(false);
   const [categoryOpen, setCategoryOpen] = useState(false);
   const [typeOpen, setTypeOpen] = useState(false);
@@ -30,10 +31,46 @@ export default function AddExpense({navigation}) {
   ]);
   const [category, setCategory] = useState(null);
   const [categories, setCategories] = useState([
-    { label: "Shopping", value: "Shopping",icon: () => <Image source={require('../assets/images/Shopping.png')} style={styles.iconStyle}/> },
-    { label: "Subscription", value: "Subscription",icon: () => <Image source={require('../assets/images/subscription.png')} style={styles.iconStyle}/> },
-    { label: "Food", value: "Food",icon: () => <Image source={require('../assets/images/Food.png')} style={styles.iconStyle}/> },
-    { label: "Traveling", value: "Traveling",icon: () => <Image source={require('../assets/images/transportation.png')} style={styles.iconStyle}/> },
+    {
+      label: "Shopping",
+      value: "Shopping",
+      icon: () => (
+        <Image
+          source={require("../assets/images/Shopping.png")}
+          style={styles.iconStyle}
+        />
+      ),
+    },
+    {
+      label: "Subscription",
+      value: "Subscription",
+      icon: () => (
+        <Image
+          source={require("../assets/images/subscription.png")}
+          style={styles.iconStyle}
+        />
+      ),
+    },
+    {
+      label: "Food",
+      value: "Food",
+      icon: () => (
+        <Image
+          source={require("../assets/images/Food.png")}
+          style={styles.iconStyle}
+        />
+      ),
+    },
+    {
+      label: "Traveling",
+      value: "Traveling",
+      icon: () => (
+        <Image
+          source={require("../assets/images/transportation.png")}
+          style={styles.iconStyle}
+        />
+      ),
+    },
     { label: "Entertainment", value: "Entertainment" },
     { label: "Medical", value: "Medical" },
     { label: "Personal Care", value: "Personal Care" },
@@ -78,7 +115,7 @@ export default function AddExpense({navigation}) {
 
     // different code
     // let permissionResult = await ImagePicker.requestMediaLibraryPermissionsAsync();
-    
+
     // if (permissionResult.granted === false) {
     //   alert("Permission to access camera roll is required!");
     //   return;
@@ -106,14 +143,13 @@ export default function AddExpense({navigation}) {
       console.log(result.uri);
     }
     // camera code
-
   };
 
   // image picker
 
   const onAdded = () => {
-    navigation.navigate("Home")
-  }
+    navigation.navigate("Home");
+  };
 
   return (
     <View
@@ -186,97 +222,95 @@ export default function AddExpense({navigation}) {
         />
       </View>
       <View style={styles.inputView}>
-        <View style={{zIndex:100}}>
-
-        <DropDownPicker
-          zIndex={100}
-          open={categoryOpen}
-          setOpen={setCategoryOpen}
-          value={category}
-          items={categories}
-          setValue={setCategory}
-          setItems={setCategories}
-          autoScroll={true}
-          listMode="SCROLLVIEW"
-          theme="DARK"
-          style={{
-            backgroundColor: "white",
-            width: width / 1.09,
-            color: "black",
-            borderColor: "#F1F1FA",
-            borderRadius: 16,
-            height: height / 14.5,
-          }}
-          textStyle={{
-            fontSize: 15,
-            color: "#91919F",
-            fontWeight: "400",
-            fontSize: 18,
-          }}
-          containerStyle={{
-            backgroundColor: "white",
-            color: "black",
-            width: width / 1.09,
-            borderColor: "#F1F1FA",
-          }}
-          dropDownContainerStyle={{
-            backgroundColor: "white",
-            borderColor: "#F1F1FA",
-          }}
-          arrowIconStyle={{
-            width: 20,
-            height: 20,
-            color: "white",
-          }}
-          showTickIcon={false}
-          placeholder="Category"
-          
-        />
-          </View>
+        <View style={{ zIndex: 100 }}>
+          <DropDownPicker
+            zIndex={100}
+            open={categoryOpen}
+            setOpen={setCategoryOpen}
+            value={category}
+            items={categories}
+            setValue={setCategory}
+            setItems={setCategories}
+            autoScroll={true}
+            listMode="SCROLLVIEW"
+            theme="DARK"
+            style={{
+              backgroundColor: "white",
+              width: width / 1.09,
+              color: "black",
+              borderColor: "#F1F1FA",
+              borderRadius: 16,
+              height: height / 14.5,
+            }}
+            textStyle={{
+              fontSize: 15,
+              color: "#91919F",
+              fontWeight: "400",
+              fontSize: 18,
+            }}
+            containerStyle={{
+              backgroundColor: "white",
+              color: "black",
+              width: width / 1.09,
+              borderColor: "#F1F1FA",
+            }}
+            dropDownContainerStyle={{
+              backgroundColor: "white",
+              borderColor: "#F1F1FA",
+            }}
+            arrowIconStyle={{
+              width: 20,
+              height: 20,
+              color: "white",
+            }}
+            showTickIcon={false}
+            placeholder="Category"
+          />
+        </View>
         <TextInput style={styles.loginInput} placeholder="Description" />
 
-          <View style={{zIndex:1}}>
-        <DropDownPicker
-          zIndex={1}
-          open={typeOpen}
-          setOpen={setTypeOpen}
-          value={type}
-          items={types}
-          setValue={setType}
-          setItems={setTypes}
-          style={{
-            backgroundColor: "white",
-            width: width / 1.09,
-            color: "black",
-            borderColor: "#F1F1FA",
-            borderRadius: 16,
-            height: height / 14.5,
-          }}
-          textStyle={{
-            fontSize: 15,
-            color: "#91919F",
-            fontWeight: "400",
-            fontSize: 18,
-          }}
-          containerStyle={{
-            backgroundColor: "white",
-            color: "black",
-            width: width / 1.09,
-            borderColor: "#F1F1FA",
-          }}
-          dropDownContainerStyle={{
-            backgroundColor: "white",
-            borderColor: "#F1F1FA",
-          }}
-          arrowIconStyle={{
-            width: 20,
-            height: 20,
-            color: "white",
-          }}
-          showTickIcon={false}
-          placeholder="Payment Mode"
-        />
-            </View>
+        <View style={{ zIndex: 1 }}>
+          <DropDownPicker
+            zIndex={1}
+            open={typeOpen}
+            setOpen={setTypeOpen}
+            value={type}
+            items={types}
+            setValue={setType}
+            setItems={setTypes}
+            style={{
+              backgroundColor: "white",
+              width: width / 1.09,
+              color: "black",
+              borderColor: "#F1F1FA",
+              borderRadius: 16,
+              height: height / 14.5,
+            }}
+            textStyle={{
+              fontSize: 15,
+              color: "#91919F",
+              fontWeight: "400",
+              fontSize: 18,
+            }}
+            containerStyle={{
+              backgroundColor: "white",
+              color: "black",
+              width: width / 1.09,
+              borderColor: "#F1F1FA",
+            }}
+            dropDownContainerStyle={{
+              backgroundColor: "white",
+              borderColor: "#F1F1FA",
+            }}
+            arrowIconStyle={{
+              width: 20,
+              height: 20,
+              color: "white",
+            }}
+            showTickIcon={false}
+            placeholder="Payment Mode"
+          />
+        </View>
         <TouchableOpacity onPress={pickImage} style={styles.uploadImage}>
           <Text
             style={{
@@ -286,7 +320,8 @@ export default function AddExpense({navigation}) {
               textAlign: "center",
             }}
           >
-            <FontAwesome name="paperclip" size={24} color="#91919F" /> Add Attachment
+            <FontAwesome name="paperclip" size={24} color="#91919F" /> Add
+            Attachment
           </Text>
         </TouchableOpacity>
         {image && (
@@ -391,8 +426,8 @@ const styles = StyleSheet.create({
     fontWeight: "600",
     lineHeight: 77,
   },
-  iconStyle:{
-    height:height/23.2,
-    width:width/10.71,
-  }
+  iconStyle: {
+    height: height / 23.2,
+    width: width / 10.71,
+  },
 });

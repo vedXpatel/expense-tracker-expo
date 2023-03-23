@@ -26,6 +26,8 @@
  import NavBar from './components/NavBar';
  import AddExpense from './components/AddExpense.jsx';
  import DetailTransaction from './components/DetailTransaction.jsx';
+ import Budget from './components/Budget.jsx';
+ import CreateBudget from './components/CreateBudget.jsx';
  
  const App = () => {
  
@@ -33,7 +35,7 @@
  
    return (
      <NavigationContainer>
-        <Stack.Navigator initialRouteName='Home'>
+        <Stack.Navigator initialRouteName='Budget'>
          <Stack.Screen name="Login" component={Login} options={{headerShown: false}}/>
             <Stack.Screen name="SignUp" component={SignUp} options={{headerShown: false}}/>
             <Stack.Screen name="SetAccount" component={SetAccount} options={{headerShown: false}}/>
@@ -41,6 +43,8 @@
             <Stack.Screen name="NavBar" component={NavBar} options={{headerShown: false}}/>
             <Stack.Screen name="AddExpense" component={AddExpense} options={{headerShown: false}}/>
             <Stack.Screen name="DetailTransaction" component={DetailTransaction} options={{headerShown: false}}/>
+            <Stack.Screen name="Budget" component={Budget} options={{headerShown: false}}/>
+            <Stack.Screen name="CreateBudget" component={CreateBudget} options={{headerShown: false}}/>
        </Stack.Navigator>
      </NavigationContainer>
    )

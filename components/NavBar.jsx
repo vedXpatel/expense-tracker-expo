@@ -11,6 +11,7 @@ import Ionicons from "@expo/vector-icons/Ionicons";
 import { AntDesign } from "@expo/vector-icons";
 import { FontAwesome } from '@expo/vector-icons';
 import Login from "./login/Login";
+import Budget from "./Budget";
 import { useNavigation } from '@react-navigation/native';
 
 export default function NavBar() {
@@ -27,7 +28,7 @@ export default function NavBar() {
             case "title2":
                 icon = "dollar";
                 break;
-            case "title3":
+            case "Budget":
                 icon = "pie-chart";
                 break;
             case "title4":
@@ -42,7 +43,7 @@ export default function NavBar() {
     const renderTabBar = ({ routeName, selectedTab, navigate }) => {
         return (
             <TouchableOpacity
-                onPress={() => navigation.navigate(selectedTab)}
+                onPress={() => navigation.navigate(routeName)}
                 style={styles.tabbarItem}
             >
                 {_renderIcon(routeName, selectedTab)}
@@ -84,8 +85,8 @@ export default function NavBar() {
                     component={() => <Login />}
                 />
                 <CurvedBottomBarExpo.Screen
-                    name="title3"
-                    component={() => <Login />}
+                    name="Budget"
+                    component={() => <Budget />}
                     position="RIGHT"
                 />
                 <CurvedBottomBarExpo.Screen
@@ -109,7 +110,7 @@ export const styles = StyleSheet.create({
             width: 0,
             height: 0,
         },
-        shadowOpacity: 1,
+        shadowOpacity: 0.2,
         shadowRadius: 5,
     },
     button: {
