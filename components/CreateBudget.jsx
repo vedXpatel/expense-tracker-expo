@@ -15,6 +15,7 @@ import {
 } from "react-native";
 import Navbar from "./NavBar";
 import DropDownPicker from "react-native-dropdown-picker";
+import { Slider } from '@rneui/themed';
 
 const height = Dimensions.get("window").height;
 const width = Dimensions.get("window").width;
@@ -166,9 +167,9 @@ export default CreateBudget = ({ navigation, route }) => {
                     {
                         isEnabled && (
                             <View >
-                                <Text>Something</Text>
+                                <Slider/>
                             </View>
-                        ) 
+                        )
                     }
 
                     {/* <TouchableOpacity
