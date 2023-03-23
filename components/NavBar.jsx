@@ -77,21 +77,21 @@ export default function NavBar() {
                 <CurvedBottomBarExpo.Screen
                     name="Login"
                     position="LEFT"
-                    component={() => <Login/>}
+                    component={Login}
                 />
                 <CurvedBottomBarExpo.Screen
                     name="title2"
                     position="LEFT"
-                    component={() => <Login />}
+                    component={Login}
                 />
                 <CurvedBottomBarExpo.Screen
                     name="Budget"
-                    component={() => <Budget />}
+                    component={Budget}
                     position="RIGHT"
                 />
                 <CurvedBottomBarExpo.Screen
                     name="title4"
-                    component={() => <Login />}
+                    component={Login}
                     position="RIGHT"
                 />
             </CurvedBottomBarExpo.Navigator>

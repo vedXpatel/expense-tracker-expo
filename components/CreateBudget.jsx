@@ -15,16 +15,24 @@ import {
 } from "react-native";
 import Navbar from "./NavBar";
 import DropDownPicker from "react-native-dropdown-picker";
-import { Slider } from '@rneui/themed';
+import { Appbar, Divider } from 'react-native-paper';
+
+// import { Slider } from "@rneui/themed";
+
+import { Slider, Icon } from "@rneui/base";
 
 const height = Dimensions.get("window").height;
 const width = Dimensions.get("window").width;
 
-export default CreateBudget = ({ navigation, route }) => {
+export default CreateBudget = ({ navigation:{goBack}, route }) => {
     // toggleSwitch
     const [isEnabled, setIsEnabled] = useState(false);
     const toggleSwitch = () => setIsEnabled((previousState) => !previousState);
     // toggleSwitch
+
+    // slidervalue
+    const [sliderValue,setSliderValue] = useState(0);
+    // slidervalue
 
     const [category, setCategory] = useState(null);
     const [categoryOpen, setCategoryOpen] = useState(false);
@@ -57,14 +65,19 @@ export default CreateBudget = ({ navigation, route }) => {
         { label: "Others", value: "Others" },
     ]);
 
-    let month = route.params.month;
+    // let month = route.params.month;
 
     return (
         <View>
             <View>
                 <View style={styles.backgroundView}>
-                    <View></View>
-                    <Text style={styles.loginText}>Add New Account</Text>
+                    <View style={{position:"absolute",width:width,top:height/20}}>
+                    <Appbar.Header mode="center-aligned" statusBarHeight={0} style={{ backgroundColor: "transparent", color: "white" }}>
+                    <Appbar.BackAction style={{  }} color="white" onPress={() => goBack()} />
+                    <Appbar.Content title="Create Budget" color="white" titleStyle={{ fontSize: 18 }} />
+                </Appbar.Header>
+                    </View>
+                    {/* <Text style={styles.loginText}>Create Budget</Text> */}
                     <Text
                         style={{
                             top: height / 2.6,
@@ -164,15 +177,46 @@ export default CreateBudget = ({ navigation, route }) => {
                             value={isEnabled}
                         />
                     </View>
-                    {
-                        isEnabled && (
-                            <View >
-                                <Slider/>
-                            </View>
-                        )
-                    }
-
-                    {/* <TouchableOpacity
+                    {isEnabled && (
+                        <View style={{justifyContent:"center",alignItems: "center",top:height/12}}>
+                            <Slider
+                                
+                                maximumTrackTintColor="#E3E5E5"
+                                maximumValue={100}
+                                minimumTrackTintColor="#7F3DFF"
+                                minimumValue={0}
+                                allowTouchTrack
+                                value={sliderValue}
+                                onSlidingComplete={() =>
+                                    console.log("onSlidingComplete()")
+                                }
+                                onSlidingStart={() =>
+                                    console.log("onSlidingStart()")
+                                }
+                                onValueChange={value =>
+                                    {
+                                        setSliderValue(value);
+                                        console.log("onValueChange()", value)
+                                    }
+                                }
+                                orientation="horizontal"
+                                step={1}
+                                style={{ width: "90%" }}
+                                thumbStyle={{ height: height/27, width: width/6.944,textAlign:"center",justifyContent: "center",alignItems:"center"}}
+                                thumbProps={{
+                                    children: (
+                                        <Text style={{color:"white",fontSize:14,fontWeight:"500"}}>
+                                            {sliderValue}%
+                                        </Text>
+                                    )
+                                }}
+                                thumbTintColor="#7F3DFF"
+                                thumbTouchSize={{ width: 40, height: 40 }}
+                                trackStyle={{ height: 10, borderRadius: 20 }}
+                            />
+                        </View>
+                    )}
+                    <TouchableOpacity
                         style={styles.loginButton}
                     >
                         <Text
@@ -180,7 +224,7 @@ export default CreateBudget = ({ navigation, route }) => {
                         >
                             Continue
                         </Text>
-                    </TouchableOpacity> */}
+                    </TouchableOpacity>
                 </View>
             </View>
         </View>
@@ -247,7 +291,7 @@ const styles = StyleSheet.create({
         fontSize: 15,
         paddingTop: 15,
         paddingBottom: 15,
-        top: Platform.OS === "android" ? height / 20 : -(height / 12),
+        top: height/8,
     },
     balanceInput: {
         fontSize: 64,
@@ -256,3 +300,10 @@ const styles = StyleSheet.create({
         marginLeft: 20,
     },
 });
+
+
+
+
+
+
+
