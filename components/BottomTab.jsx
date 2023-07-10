@@ -82,7 +82,7 @@ export default function BottomTab({ navigation }) {
                             ),
                         }}
                         listeners={({ navigation, route }) => ({
-                            // Onpress Update....
+                            // OnPress Update....
                             tabPress: (e) => {
                                 Animated.spring(tabOffsetValue, {
                                     toValue: 0,
@@ -113,7 +113,7 @@ export default function BottomTab({ navigation }) {
                             ),
                         }}
                         listeners={({ navigation, route }) => ({
-                            // Onpress Update....
+                            // OnPress Update....
                             tabPress: (e) => {
                                 Animated.spring(tabOffsetValue, {
                                     toValue: getWidth(),
@@ -179,7 +179,7 @@ export default function BottomTab({ navigation }) {
                             ),
                         }}
                         listeners={({ navigation, route }) => ({
-                            // Onpress Update....
+                            // OnPress Update....
                             tabPress: (e) => {
                                 Animated.spring(tabOffsetValue, {
                                     toValue: getWidth() * 3,
@@ -210,7 +210,7 @@ export default function BottomTab({ navigation }) {
                             ),
                         }}
                         listeners={({ navigation, route }) => ({
-                            // Onpress Update....
+                            // OnPress Update....
                             tabPress: (e) => {
                                 Animated.spring(tabOffsetValue, {
                                     toValue: getWidth() * 4,
@@ -251,14 +251,6 @@ function getWidth() {
 
 function EmptyScreen({ navigation }) {
     navigation.navigate("Login");
-    // return (
-    //     <View
-    //         style={{ flex: 1, justifyContent: "center", alignItems: "center" }}
-    //     >
-    //         <Text>Something</Text>
-
-    //     </View>
-    // );
 }
 
 function SettingsScreen() {

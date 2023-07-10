@@ -183,7 +183,6 @@ export default function AddExpense({ navigation }) {
             borderWidth: 0,
           }}
           textStyle={{
-            fontSize: 15,
             color: "white",
             fontWeight: "600",
             fontSize: 18,
@@ -256,7 +255,6 @@ export default function AddExpense({ navigation }) {
               height: height / 14.5,
             }}
             textStyle={{
-              fontSize: 15,
               color: "#91919F",
               fontWeight: "400",
               fontSize: 18,
@@ -300,7 +298,6 @@ export default function AddExpense({ navigation }) {
               height: height / 14.5,
             }}
             textStyle={{
-              fontSize: 15,
               color: "#91919F",
               fontWeight: "400",
               fontSize: 18,

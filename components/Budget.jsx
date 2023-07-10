@@ -23,7 +23,7 @@ const width = Dimensions.get("window").width;
 const Items = ["January", "February", "March", "April", "May", "June", "July", "August", "September", "October", "November", "December"];
 
 
-export default Budget = ({navigation}) => {
+const Budget = ({navigation}) => {
 
     const [month, setMonth] = useState();
 
@@ -106,3 +106,5 @@ const styles = StyleSheet.create({
         top:height/5,
     }
 })
+
+export default Budget;
