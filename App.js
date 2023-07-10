@@ -28,6 +28,7 @@
  import DetailTransaction from './components/DetailTransaction.jsx';
  import Budget from './components/Budget.jsx';
  import CreateBudget from './components/CreateBudget.jsx';
+import Notification from './components/pages/Notification';
  
  const App = () => {
  
@@ -45,6 +46,7 @@
             <Stack.Screen name="DetailTransaction" component={DetailTransaction} options={{headerShown: false}}/>
             <Stack.Screen name="Budget" component={Budget} options={{headerShown: false}}/>
             <Stack.Screen name="CreateBudget" component={CreateBudget} options={{headerShown: false}}/>
+            <Stack.Screen name="Notification" component={Notification} options={{headerShown: false}}/>
        </Stack.Navigator>
      </NavigationContainer>
    )

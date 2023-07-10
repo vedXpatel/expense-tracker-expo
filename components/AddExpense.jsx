@@ -151,6 +151,16 @@ export default function AddExpense({ navigation }) {
     navigation.navigate("Home");
   };
 
+  const dropDownBgColor = () => {
+    let color;
+    if (value === "Income" ) {
+      open ? color = "#022E1E" : color = "#00A86B";
+    } else{
+      open ? color = "#4B0409" : color = "#FD3C4A";
+    }
+    return color;
+  }
+
   return (
     <View
       style={[
@@ -179,14 +189,17 @@ export default function AddExpense({ navigation }) {
             fontSize: 18,
           }}
           containerStyle={{
-            backgroundColor: "transparent",
+            backgroundColor: dropDownBgColor(),
             borderWidth: 0,
+            borderRadius: 10,
             color: "black",
             width: width / 3.2,
           }}
           dropDownContainerStyle={{
-            backgroundColor: "transparent",
+            backgroundColor: value === "Income" ? "#022E1E" : "#4B0409",
+            backfaceVisibility: "visible",
             borderWidth: 0,
+            borderRadius: 10,
           }}
           arrowIconStyle={{
             width: 20,

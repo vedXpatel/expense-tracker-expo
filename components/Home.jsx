@@ -16,14 +16,13 @@ import Svg, {
   Path,
   Defs,
   Stop,
-  LinearGradient,
 } from "react-native-svg";
 // import BottomTab from "./BottomTab";
 // import TabBar from "fluidbottomnavigation-rn";
 import Navbar from "./NavBar";
 import { Avatar } from '@rneui/themed';
 import { useNavigation } from '@react-navigation/native';
-
+import { LinearGradient } from "expo-linear-gradient";
 
 
 const width = Dimensions.get("window").width;
@@ -136,6 +135,10 @@ function Home() {
   return (
     <View>
       <ScrollView>
+        <LinearGradient colors={['#FDCE76', '#FFFFFF','#C3A8F8']} 
+          style={styles.linearGradient}
+          >
+
         <View style={{ height: height * 1.5 }}>
           <View style={{position:"absolute",justifyContent:"space-between",top:height/13.5333,marginHorizontal:width/23.4375,flexDirection:"row",width:width - (width/23.4375) - (width/23.4375),}}>
             <TouchableOpacity style={{borderWidth:1,borderRadius:24,borderColor:"#7F3DFF",padding:1}}>
@@ -145,7 +148,7 @@ function Home() {
               source={{ uri: "https://randomuser.me/api/portraits/men/36.jpg" }}
             />
             </TouchableOpacity>
-            <TouchableOpacity>
+            <TouchableOpacity onPress={() => navigation.navigate('Notification')}>
             <Image source={require("../assets/images/notification.png")}  />
             </TouchableOpacity>
           </View>
@@ -307,6 +310,7 @@ function Home() {
             /> */}
           </View>
         </View>
+      </LinearGradient>
       </ScrollView>
       {/* <TabBar
       onPress={(tabIndex) => { console.log(tabIndex) }}
