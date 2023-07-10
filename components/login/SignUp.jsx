@@ -23,8 +23,9 @@ const SignUp = ({navigation}) => {
             <View style={styles.checkbox}>
             <BouncyCheckbox fillColor="#7F3DFF" textStyle={{
                 textDecorationLine: "none",
-                textDecoration:"none"
-            }} onPress={(isChecked) => {}} text="By signing up, you agree to the Terms of Service and Privacy Policy" iconStyle={{ borderColor: "#E0E0E0", borderRadius:5, }} innerIconStyle={{borderRadius:5,}} textStyle={{ fontFamily: "Poppins-Regular" }}/>
+                textDecoration:"none",
+                fontFamily: "Poppins-Regular"
+            }} onPress={(isChecked) => {}} text="By signing up, you agree to the Terms of Service and Privacy Policy" iconStyle={{ borderColor: "#E0E0E0", borderRadius:5, }} innerIconStyle={{borderRadius:5,}} />
             </View>
                 <TouchableOpacity style={styles.loginButton}>
                 <Text style={{ color: "white", fontSize: 18, textAlign: "center" }}>
