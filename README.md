@@ -4,6 +4,9 @@
 
 ---
 
+- `git clone <url>`
+- `cd expense-tracker-expo`
+- `yarn install`
 - `expo start --tunnel`
 
 ## Design
