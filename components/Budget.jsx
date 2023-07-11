@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, {useState} from "react";
 import {
     View,
     Text,
@@ -14,7 +14,7 @@ import {
     Alert,
 } from "react-native";
 import Navbar from "./NavBar";
-import { Picker } from "@react-native-picker/picker";
+import {Picker} from "@react-native-picker/picker";
 
 
 const height = Dimensions.get("window").height;
@@ -29,39 +29,47 @@ const Budget = ({navigation}) => {
 
     return (
         <View>
-            <View style={{ height: height, width: width, backgroundColor: "#7F3DFF", }}>
+            <View style={{height: height, width: width, backgroundColor: "#7F3DFF",}}>
                 <Picker
                     style={styles.accountTypeInput}
                     selectedValue={month}
                     onValueChange={(itemValue, itemIndex) =>
                         setMonth(itemValue)
                     }
-                    itemStyle={{color:"#FCFCFC",fontSize:24,fontWeight:"500"}}
+                    itemStyle={{color: "#FCFCFC", fontSize: 24, fontWeight: "500"}}
                 >
                     {
                         Items.map((item) => {
                             return (
-                                <Picker.Item color="#FCFCFC" style={{color:"#FCFCFC",fontSize:24,fontWeight:"500",backgroundColor:"#7F3DFF"}}  label={item} value={item} />
+                                <Picker.Item color="#FCFCFC" style={{
+                                    color: "#FCFCFC",
+                                    fontSize: 24,
+                                    fontWeight: "500",
+                                    backgroundColor: "#7F3DFF"
+                                }} label={item} value={item}/>
                             )
                         })
                     }
                 </Picker>
             </View>
             <View style={styles.overlay}>
-                <Text style={{ textAlign: "center", color: "#91919F", fontSize: 16, fontWeight: "500", marginHorizontal: width / 10 }}>You don’t have a budget. Let’s make one so you in control.</Text>
+                <Text style={{
+                    textAlign: "center",
+                    color: "#91919F",
+                    fontSize: 16,
+                    fontWeight: "500",
+                    marginHorizontal: width / 10
+                }}>You don’t have a budget. Let’s make one so you are in control.</Text>
                 <TouchableOpacity
                     style={styles.loginButton}
-                    onPress={()=>navigation.navigate("CreateBudget",{month:month})}
-
+                    onPress={() => navigation.navigate("CreateBudget", {month: month})}
                 >
-                    <Text
-                        style={{ color: "white", fontSize: 18, textAlign: "center" }}
-                    >
+                    <Text style={{color: "white", fontSize: 18, textAlign: "center"}}>
                         Create Budget
                     </Text>
                 </TouchableOpacity>
             </View>
-            <Navbar />
+            <Navbar/>
         </View>
     )
 }
@@ -103,7 +111,7 @@ const styles = StyleSheet.create({
         fontSize: 15,
         paddingTop: 15,
         paddingBottom: 15,
-        top:height/5,
+        top: height / 5,
     }
 })
 
