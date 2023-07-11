@@ -22,7 +22,6 @@ const width = Dimensions.get("window").width;
 
 const Items = ["January", "February", "March", "April", "May", "June", "July", "August", "September", "October", "November", "December"];
 
-
 const Budget = ({navigation}) => {
 
     const [month, setMonth] = useState();
