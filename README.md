@@ -1,6 +1,6 @@
 # Expense Tracker Application
 
-## How to Run the Application
+## Getting Started
 
 ---
 
