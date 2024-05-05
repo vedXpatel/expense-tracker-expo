@@ -1,16 +1,13 @@
-import React, { useState } from "react";
+import React from "react";
 import {
   View,
   Text,
   StyleSheet,
   TextInput,
   TouchableOpacity,
-  Pressable,
+  SafeAreaView,
 } from "react-native";
 import { Dimensions } from "react-native";
-import Icon from "react-native-vector-icons/FontAwesome";
-import { NavigationContainer } from "@react-navigation/native";
-import { createNativeStackNavigator } from "@react-navigation/native-stack";
 
 const width = Dimensions.get("window").width;
 const height = Dimensions.get("window").height;
@@ -18,35 +15,37 @@ const height = Dimensions.get("window").height;
 const Login = ({ navigation }) => {
   return (
     <View>
-      <Text style={styles.loginText}>Login</Text>
-      <TextInput style={styles.loginInput} placeholder="Email" />
-      <TextInput
-        secureTextEntry={true}
-        style={styles.passwordInput}
-        placeholder="Password"
-      />
-      <TouchableOpacity
-        style={styles.loginButton}
-        onPress={() => navigation.navigate("SetAccount")}
-      >
-        <Text style={{ color: "white", fontSize: 18, textAlign: "center" }}>
-          Login
-        </Text>
-      </TouchableOpacity>
-      <TouchableOpacity>
-        <Text style={styles.forgotPassword}>Forgot Password ?</Text>
-      </TouchableOpacity>
-      <View style={styles.signUpLink}>
-        <Text style={{ textAlign: "center", fontSize: 16 }}>
-          Don't have an account?{" "}
-          <Text
-            onPress={() => navigation.navigate("SignUp")}
-            style={styles.signUpText}
-          >
-            Sign Up
+      <SafeAreaView>
+        <Text style={styles.loginText}>Login</Text>
+        <TextInput style={styles.loginInput} placeholder="Email" />
+        <TextInput
+          secureTextEntry={true}
+          style={styles.passwordInput}
+          placeholder="Password"
+        />
+        <TouchableOpacity
+          style={styles.loginButton}
+          onPress={() => navigation.navigate("SetAccount")}
+        >
+          <Text style={{ color: "white", fontSize: 18, textAlign: "center" }}>
+            Login
           </Text>
-        </Text>
-      </View>
+        </TouchableOpacity>
+        <TouchableOpacity>
+          <Text style={styles.forgotPassword}>Forgot Password ?</Text>
+        </TouchableOpacity>
+        <View style={styles.signUpLink}>
+          <Text style={{ textAlign: "center", fontSize: 16 }}>
+            Don't have an account?{" "}
+            <Text
+              onPress={() => navigation.navigate("SignUp")}
+              style={styles.signUpText}
+            >
+              Sign Up
+            </Text>
+          </Text>
+        </View>
+      </SafeAreaView>
     </View>
   );
 };
