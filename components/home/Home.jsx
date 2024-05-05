@@ -11,71 +11,14 @@ import {
   SafeAreaView,
 } from "react-native";
 import Svg, { Circle, Rect, Path, Defs, Stop } from "react-native-svg";
-import Navbar from "./NavBar";
+import Navbar from "../NavBar";
 import { Avatar } from "@rneui/themed";
 import { useNavigation } from "@react-navigation/native";
 import { LinearGradient } from "expo-linear-gradient";
+import { tabs, recentTransactions } from "./utils";
 
 const width = Dimensions.get("window").width;
 const height = Dimensions.get("window").height;
-
-const tabs = [
-  {
-    title: "Today",
-    id: 1,
-    serial: 1,
-  },
-  {
-    title: "Week",
-    id: 2,
-    serial: 2,
-  },
-  {
-    title: "Month",
-    id: 3,
-    serial: 3,
-  },
-  {
-    title: "Year",
-    id: 4,
-    serial: 4,
-  },
-];
-
-const recentTransactions = [
-  {
-    title: "Shopping",
-    type: "Expense",
-    amount: "150",
-    note: "lorem ipsum",
-    datetime: "10:00 AM",
-    id: 1,
-  },
-  {
-    title: "Shopping",
-    type: "Expense",
-    amount: "150",
-    note: "lorem ipsum",
-    datetime: "10:00 AM",
-    id: 2,
-  },
-  {
-    title: "Shopping",
-    type: "Expense",
-    amount: "150",
-    note: "lorem ipsum",
-    datetime: "10:00 AM",
-    id: 3,
-  },
-  {
-    title: "Lottery",
-    type: "Income",
-    amount: "150",
-    note: "won a million dollar lottery",
-    datetime: "10:00 AM",
-    id: 4,
-  },
-];
 
 function Home() {
   const [selected, setSelected] = useState(1);
@@ -119,7 +62,7 @@ function Home() {
       >
         <Image
           style={{ marginLeft: 20 }}
-          source={require("../assets/images/Shopping.png")}
+          source={require("../../assets/images/Shopping.png")}
         />
         <View
           style={{ flexDirection: "column", justifyContent: "space-evenly" }}
@@ -179,7 +122,9 @@ function Home() {
               <TouchableOpacity
                 onPress={() => navigation.navigate("Notification")}
               >
-                <Image source={require("../assets/images/notification.png")} />
+                <Image
+                  source={require("../../assets/images/notification.png")}
+                />
               </TouchableOpacity>
             </View>
             <Text style={styles.loginText}>Account Balance</Text>
@@ -284,7 +229,7 @@ function Home() {
               <Image
                 resizeMethod="auto"
                 resizeMode="contain"
-                source={require("../assets/images/spendGraph.png")}
+                source={require("../../assets/images/spendGraph.png")}
               />
             </View>
 
