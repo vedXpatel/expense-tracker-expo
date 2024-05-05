@@ -8,20 +8,13 @@ import {
   Image,
   FlatList,
   TouchableOpacity,
-  SafeAreaView
+  SafeAreaView,
 } from "react-native";
-import Svg, {
-  Circle,
-  Rect,
-  Path,
-  Defs,
-  Stop,
-} from "react-native-svg";
+import Svg, { Circle, Rect, Path, Defs, Stop } from "react-native-svg";
 import Navbar from "./NavBar";
-import { Avatar } from '@rneui/themed';
-import { useNavigation } from '@react-navigation/native';
+import { Avatar } from "@rneui/themed";
+import { useNavigation } from "@react-navigation/native";
 import { LinearGradient } from "expo-linear-gradient";
-
 
 const width = Dimensions.get("window").width;
 const height = Dimensions.get("window").height;
@@ -84,8 +77,6 @@ const recentTransactions = [
   },
 ];
 
-
-
 function Home() {
   const [selected, setSelected] = useState(1);
   const navigation = useNavigation();
@@ -108,7 +99,17 @@ function Home() {
   );
 
   const TransactionItem = ({ title, type, note, datetime, amount }) => (
-    <TouchableOpacity onPress={() => navigation.navigate("DetailTransaction", { title: title, type: type, note: note, datetime: datetime, amount: amount })}>
+    <TouchableOpacity
+      onPress={() =>
+        navigation.navigate("DetailTransaction", {
+          title: title,
+          type: type,
+          note: note,
+          datetime: datetime,
+          amount: amount,
+        })
+      }
+    >
       <View
         style={{
           flexDirection: "row",
@@ -116,14 +117,25 @@ function Home() {
           paddingTop: 10,
         }}
       >
-        <Image style={{ marginLeft: 20 }} source={require("../assets/images/Shopping.png")} />
-        <View style={{ flexDirection: "column", justifyContent: "space-evenly" }}>
+        <Image
+          style={{ marginLeft: 20 }}
+          source={require("../assets/images/Shopping.png")}
+        />
+        <View
+          style={{ flexDirection: "column", justifyContent: "space-evenly" }}
+        >
           <Text style={{ fontSize: 16, fontWeight: "500" }}>{title}</Text>
-          <Text style={{ fontSize: 13, color: "#91919F" }}>{(note.length > 15) ? note.substring(0, 12) + "..." : note} </Text>
+          <Text style={{ fontSize: 13, color: "#91919F" }}>
+            {note.length > 15 ? note.substring(0, 12) + "..." : note}{" "}
+          </Text>
         </View>
         <View style={{ width: width / 6.14 }}></View>
-        <View style={{ flexDirection: "column", justifyContent: "space-evenly" }}>
-          <Text style={type === "Expense" ? styles.negative : styles.positive}>{type === "Expense" ? "-" : "+"}${amount}</Text>
+        <View
+          style={{ flexDirection: "column", justifyContent: "space-evenly" }}
+        >
+          <Text style={type === "Expense" ? styles.negative : styles.positive}>
+            {type === "Expense" ? "-" : "+"}${amount}
+          </Text>
           <Text style={{ fontSize: 13, color: "#91919F" }}>{datetime}</Text>
         </View>
       </View>
@@ -133,19 +145,40 @@ function Home() {
   return (
     <View>
       <ScrollView>
-        <LinearGradient colors={['#FDCE76', '#FFFFFF', '#C3A8F8']}
+        <LinearGradient
+          colors={["#FDCE76", "#FFFFFF", "#C3A8F8"]}
           style={styles.linearGradient}
         >
           <View style={{ height: height * 1.5 }}>
-            <View style={{ position: "absolute", justifyContent: "space-between", top: height / 13.5333, marginHorizontal: width / 23.4375, flexDirection: "row", width: width - (width / 23.4375) - (width / 23.4375), }}>
-              <TouchableOpacity style={{ borderWidth: 1, borderRadius: 24, borderColor: "#7F3DFF", padding: 1 }}>
+            <View
+              style={{
+                position: "absolute",
+                justifyContent: "space-between",
+                top: height / 13.5333,
+                marginHorizontal: width / 23.4375,
+                flexDirection: "row",
+                width: width - width / 23.4375 - width / 23.4375,
+              }}
+            >
+              <TouchableOpacity
+                style={{
+                  borderWidth: 1,
+                  borderRadius: 24,
+                  borderColor: "#7F3DFF",
+                  padding: 1,
+                }}
+              >
                 <Avatar
                   size={32}
                   rounded
-                  source={{ uri: "https://randomuser.me/api/portraits/men/36.jpg" }}
+                  source={{
+                    uri: "https://randomuser.me/api/portraits/men/36.jpg",
+                  }}
                 />
               </TouchableOpacity>
-              <TouchableOpacity onPress={() => navigation.navigate('Notification')}>
+              <TouchableOpacity
+                onPress={() => navigation.navigate("Notification")}
+              >
                 <Image source={require("../assets/images/notification.png")} />
               </TouchableOpacity>
             </View>
@@ -182,7 +215,11 @@ function Home() {
                   </View>
                   <View>
                     <Text
-                      style={{ color: "white", fontSize: 22, fontWeight: "600" }}
+                      style={{
+                        color: "white",
+                        fontSize: 22,
+                        fontWeight: "600",
+                      }}
                     >
                       $5000
                     </Text>
@@ -215,11 +252,17 @@ function Home() {
                 </View>
                 <View>
                   <View>
-                    <Text style={{ color: "white", fontSize: 14 }}>Expenses</Text>
+                    <Text style={{ color: "white", fontSize: 14 }}>
+                      Expenses
+                    </Text>
                   </View>
                   <View>
                     <Text
-                      style={{ color: "white", fontSize: 22, fontWeight: "600" }}
+                      style={{
+                        color: "white",
+                        fontSize: 22,
+                        fontWeight: "600",
+                      }}
                     >
                       $1200
                     </Text>
@@ -276,9 +319,9 @@ function Home() {
                     note={item.note}
                     amount={item.amount}
                     key={item.id}
-                  />);
+                  />
+                );
               })}
-
 
               {/* <FlatList
               data={recentTransactions}
@@ -320,8 +363,7 @@ const styles = StyleSheet.create({
     color: "#91919F",
     top: height / 7.5,
   },
-  backgroundView: {
-  },
+  backgroundView: {},
   accountBalance: {
     top: height / 6.5,
     fontSize: 40,
@@ -390,7 +432,7 @@ const styles = StyleSheet.create({
     color: "#00A86B",
     fontWeight: "600",
     fontSize: 16,
-  }
+  },
 });
 
 export default Home;

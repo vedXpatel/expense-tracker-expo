@@ -153,13 +153,13 @@ export default function AddExpense({ navigation }) {
 
   const dropDownBgColor = () => {
     let color;
-    if (value === "Income" ) {
-      open ? color = "#022E1E" : color = "#00A86B";
-    } else{
-      open ? color = "#4B0409" : color = "#FD3C4A";
+    if (value === "Income") {
+      open ? (color = "#022E1E") : (color = "#00A86B");
+    } else {
+      open ? (color = "#4B0409") : (color = "#FD3C4A");
     }
     return color;
-  }
+  };
 
   return (
     <View
