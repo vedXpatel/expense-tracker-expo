@@ -267,7 +267,6 @@ function Home() {
                   />
                 );
               })}
-
               {/* <FlatList
               data={recentTransactions}
               renderItem={({ item }) => (
